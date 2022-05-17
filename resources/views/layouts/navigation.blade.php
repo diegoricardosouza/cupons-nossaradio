@@ -42,9 +42,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('users.profile', Auth::user()->id)"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
+                        <x-dropdown-link :href="route('users.edit', Auth::user()->id)"
+                                onclick="this.closest('form').submit();">
                             Meu Perfil
                         </x-dropdown-link>
 
@@ -55,7 +54,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
