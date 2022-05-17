@@ -19,10 +19,20 @@ class UserService {
         return $this->repository->getAll($idUserLogged);
     }
 
+    public function getUser($id)
+    {
+        return $this->repository->getUser($id);
+    }
+
     public function createNewUser($request) {
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
 
         return $this->repository->createNew($data);
+    }
+
+    public function deleteUser($id)
+    {
+        return $this->repository->delete($id);
     }
 }

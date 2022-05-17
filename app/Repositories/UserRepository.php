@@ -26,6 +26,13 @@ class UserRepository {
     {
         return $this->entity->create($data);
     }
+
+    public function delete($id)
+    {
+        $user = $this->getUser($id);
+
+        return $user->delete();
+    }
 }
 
 
