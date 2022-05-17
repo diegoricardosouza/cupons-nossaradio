@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,15 +8,20 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/coupons', function () {
     return view('coupons');
 })->middleware(['auth'])->name('coupons');
 
-Route::get('/users', function () {
-    return view('users');
-})->middleware(['auth'])->name('users');
+
+
+Route::middleware('auth')->group(function() {
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+});
+
+
 
 require __DIR__.'/auth.php';
