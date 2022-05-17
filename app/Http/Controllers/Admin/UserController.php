@@ -47,13 +47,38 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('user_success', 'Usuário criado com sucesso!');
     }
 
+    public function edit($id)
+    {
+        if (!$user = $this->userService->getUser($id))
+            return redirect()->route('users.index');
+
+        return view('admin.users.edit', compact('user'));
+    }
+
+    public function update(StoreUpdateUserFormRequest $request, $id)
+    {
+        if (!$this->userService->getUser($id))
+            return redirect()->route('users.index');
+
+        $userUpdated = $this->userService->updateUser($id, $request);
+
+        if ($userUpdated)
+            return redirect()->route('users.index')->with('user_success', 'Usuário Atualizado com sucesso!');
+    }
+
     public function destroy($id)
     {
-        if(!$this->userService->getUser($id))
+        if (!$this->userService->getUser($id))
             return redirect()->route('users.index');
 
         $this->userService->deleteUser($id);
 
         return redirect()->route('users.index')->with('user_success', 'Usuário Deletado com sucesso!');
+    }
+
+    private function verifyUserExists($id, $route = 'users.index')
+    {
+        if (!$this->userService->getUser($id))
+            return redirect()->route($route);
     }
 }

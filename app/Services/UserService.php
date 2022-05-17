@@ -31,6 +31,21 @@ class UserService {
         return $this->repository->createNew($data);
     }
 
+    public function updateUser($id, $request)
+    {
+        $data = $request->all();
+        $user = $this->repository->getUser($id);
+
+        if(!empty($data['password']))
+        {
+            $data['password'] = bcrypt($request->password);
+        } else {
+            $data['password'] = $user->password;
+        }
+
+        return $this->repository->update($id, $data);
+    }
+
     public function deleteUser($id)
     {
         return $this->repository->delete($id);

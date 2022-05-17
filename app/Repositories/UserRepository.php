@@ -19,12 +19,19 @@ class UserRepository {
 
     public function getUser($id)
     {
-        return $this->entity->findOrFail($id);
+        return $this->entity->find($id);
     }
 
     public function createNew($data)
     {
         return $this->entity->create($data);
+    }
+
+    public function update($id, $data)
+    {
+        $user = $this->getUser($id);
+
+        return $user->update($data);
     }
 
     public function delete($id)
