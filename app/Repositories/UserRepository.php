@@ -12,9 +12,19 @@ class UserRepository {
         $this->entity = $user;
     }
 
-    public function getAllUsers($id, $number = 6)
+    public function getAll($id, $number = 6)
     {
         return $this->entity->where('id', '!=', $id)->paginate($number);
+    }
+
+    public function getUser($id)
+    {
+        return $this->entity->findOrFail($id);
+    }
+
+    public function createNew($data)
+    {
+        return $this->entity->create($data);
     }
 }
 

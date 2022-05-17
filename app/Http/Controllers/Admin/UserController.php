@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -35,5 +36,14 @@ class UserController extends Controller
     public function create()
     {
         return view('admin.users.create');
+    }
+
+
+    public function store(StoreUpdateUserFormRequest $request)
+    {
+        $userCreated = $this->userService->createNewUser($request);
+
+        if($userCreated)
+            return redirect()->route('users.index')->with('user_success', 'Usuário criado com sucesso!');
     }
 }

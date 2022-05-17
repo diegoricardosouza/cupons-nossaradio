@@ -9,7 +9,7 @@
 
     <div class="pt-12 py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-end">
-            <a href="{{ route('users.create') }}" class="flex items-center justify-center bg-violet-900 rounded-full py-1 px-1 pr-3 ml-4 text-white text-xs uppercase">
+            <a href="{{ route('users.create') }}" class="flex items-center justify-center bg-violet-900 hover:bg-violet-700 transition-all rounded-full py-2 px-2 pr-4 ml-4 text-white text-xs uppercase">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                 </svg>
@@ -21,6 +21,12 @@
 
     <div class="py-2">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if(session()->has('user_success'))
+                <div class="bg-green-500 rounded-md py-3 px-3 mb-3 text-green-900">
+                    Usuário criado com sucesso!
+                </div>
+            @endif
+
             <div class="bg-white shadow-sm sm:rounded-lg">
                 <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
                     <thead>
@@ -72,6 +78,16 @@
                     </tbody>
                 </table>
             </div>
+
+            @if($users->total() > '6')
+                <div class="mt-5">
+                    @if(isset($dataForm))
+                        {!! $users->appends($dataForm)->links() !!}
+                    @else
+                        {!! $users->links() !!}
+                    @endif
+                </div>
+            @endif
         </div>
     </div>
 </x-app-layout>

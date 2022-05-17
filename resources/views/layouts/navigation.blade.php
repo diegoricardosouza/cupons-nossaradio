@@ -20,7 +20,7 @@
                         {{ __('Cupons') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Usuários') }}
                     </x-nav-link>
                 </div>
@@ -79,7 +79,7 @@
                 {{ __('Cupons') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('users')" :active="request()->routeIs('users')">
+            <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                 {{ __('Usuários') }}
             </x-responsive-nav-link>
         </div>

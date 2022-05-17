@@ -16,6 +16,13 @@ class UserService {
     {
         $idUserLogged = auth()->user()->id;
 
-        return $this->repository->getAllUsers($idUserLogged);
+        return $this->repository->getAll($idUserLogged);
+    }
+
+    public function createNewUser($request) {
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+
+        return $this->repository->createNew($data);
     }
 }
