@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -74,11 +72,5 @@ class UserController extends Controller
         $this->userService->deleteUser($id);
 
         return redirect()->route('users.index')->with('user_success', 'Usuário Deletado com sucesso!');
-    }
-
-    private function verifyUserExists($id, $route = 'users.index')
-    {
-        if (!$this->userService->getUser($id))
-            return redirect()->route($route);
     }
 }

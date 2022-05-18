@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
-            {{ __('Usuários') }}
+            {{ __('Cidades') }}
 
 
         </h2>
@@ -22,18 +22,18 @@
                     </svg>
                 </li>
                 <li class="text-sm text-violet-900 font-semibold">
-                    Usuários
+                    Cidades
                 </li>
             </ul>
         </div>
 
         <div>
-            <a href="{{ route('users.create') }}" class="flex items-center justify-center bg-violet-900 hover:bg-violet-700 transition-all rounded-full py-2 px-2 pr-4 ml-4 text-white text-xs uppercase">
+            <a href="{{ route('cities.create') }}" class="flex items-center justify-center bg-violet-900 hover:bg-violet-700 transition-all rounded-full py-2 px-2 pr-4 ml-4 text-white text-xs uppercase">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                 </svg>
 
-                Novo Usuário
+                Nova Cidade
             </a>
         </div>
     </div>
@@ -47,7 +47,7 @@
             @endif
 
             <div class="bg-white shadow-sm sm:rounded-lg overflow-auto">
-                @if($users->total() > 0)
+                @if($cities->total() > 0)
                 <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
                     <thead>
                         <tr>
@@ -55,11 +55,6 @@
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-violet-900 text-left text-xs font-semibold text-white uppercase tracking-wider"
                             >
                                 Nome
-                            </th>
-                            <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-violet-900 text-left text-xs font-semibold text-white uppercase tracking-wider"
-                            >
-                                E-mail
                             </th>
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-200 bg-violet-900 text-xs font-semibold text-white uppercase tracking-wider w-36 text-center"
@@ -70,23 +65,20 @@
                     </thead>
 
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($cities as $city)
                         <tr>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                {{ $user->name }}
-                            </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                {{ $user->email }}
+                                {{ $city->name }}
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div class="flex items-center justify-center">
-                                    <a href="{{ route('users.edit', $user->id) }}" class="text-blue-600 mx-2">
+                                    <a href="{{ route('cities.edit', $city->id) }}" class="text-blue-600 mx-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                         </svg>
                                     </a>
 
-                                    <form action="{{ route('users.destroy', $user->id) }}" class="flex" method="post">
+                                    <form action="{{ route('cities.destroy', $city->id) }}" class="flex" method="post">
                                         @csrf
                                         @method("DELETE")
 
@@ -103,16 +95,16 @@
                     </tbody>
                 </table>
                 @else
-                    <div class="p-3 rounded-md bg-blue-700 text-white">Nenhum usuário cadastrado!</div>
+                    <div class="p-3 rounded-md bg-blue-700 text-white">Nenhuma cidade cadastrada!</div>
                 @endif
             </div>
 
-            @if($users->total() > '6')
+            @if($cities->total() > '6')
                 <div class="mt-5">
                     @if(isset($dataForm))
-                        {!! $users->appends($dataForm)->links() !!}
+                        {!! $cities->appends($dataForm)->links() !!}
                     @else
-                        {!! $users->links() !!}
+                        {!! $cities->links() !!}
                     @endif
                 </div>
             @endif
