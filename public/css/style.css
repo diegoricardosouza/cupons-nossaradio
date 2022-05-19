@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+a,
+a:hover {
+    text-decoration: none;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
 }
@@ -36,8 +41,39 @@ body {
     font-size: 32px;
 }
 
+.coupons__pagination nav > .flex{
+    display: none;
+}
 
+.coupons__pagination nav .hidden p.text-sm.text-gray-700.leading-5 {
+    display: none;
+}
 
+.coupons__pagination nav .hidden .relative {
+    display: flex;
+    justify-content: center;
+}
+
+.coupons__pagination nav .hidden .relative svg {
+    width: 24px;
+}
+
+.coupons__pagination nav .hidden .relative a.relative {
+    padding: 5px 13px !important;
+}
+
+.coupons__pagination nav .hidden .relative span.relative {
+    padding: 5px 13px !important;
+}
+
+.coupons__pagination nav .hidden .relative a {
+    color: #592e66;
+}
+
+.coupons__pagination nav .hidden [aria-current="page"] span {
+    background-color: #592e66 !important;
+    color: #fff !important;
+}
 
 
 @media (max-width: 767px) {
@@ -46,5 +82,14 @@ body {
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
+    }
+
+    .coupons__pagination nav .hidden {
+        display: none;
+    }
+
+    .coupons__pagination nav>.flex {
+        display: flex;
+        justify-content: space-between;
     }
 }

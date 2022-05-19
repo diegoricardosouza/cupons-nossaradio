@@ -19,12 +19,12 @@ class HomeService {
 
     public function getAllCoupons()
     {
-        return $this->repository->getAll(6);
+        return $this->repository->getAll(15);
     }
 
     public function getAllCouponsByCity($city)
     {
-        return $this->repositoryCity->getAllByCity($city, 6);
+        return $this->repositoryCity->getAllByCity($city, 15);
     }
 
     public function getCityBySlug($slug)
@@ -32,8 +32,8 @@ class HomeService {
         return $this->repositoryCity->getCityBySlug($slug);
     }
 
-    public function ajaxUpdateDownload()
+    public function ajaxUpdateDownload($id)
     {
-        return null;
+        return $this->repository->updateDownload($id);
     }
 }

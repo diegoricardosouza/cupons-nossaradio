@@ -1,6 +1,11 @@
 @extends('layouts.home')
 
-@section('title', 'Cupons')
+@if($coupons)
+    @section('title', "Cupons {$city->name}" )
+@else
+    @section('title', 'Cupons')
+@endif
+
 
 @section('content')
 
@@ -23,6 +28,19 @@
             </div>
             @endforeach
         </div>
+
+        @if($coupons->total() > '15')
+            <div class="row">
+                <div class="col-lg-12 coupons__pagination">
+                    @if(isset($dataForm))
+                        {!! $coupons->appends($dataForm)->links() !!}
+                    @else
+                        {!! $coupons->links() !!}
+                    @endif
+                </div>
+            </div>
+        @endif
+
         @else
         <div class="row">
             <div class="col-lg-12 coupons__title text-center">

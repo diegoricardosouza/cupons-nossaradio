@@ -36,6 +36,6 @@ class HomeController extends Controller
 
     public function ajaxDownload(Request $request)
     {
-        return $request->id;
+        return $this->homeService->ajaxUpdateDownload($request->id);
     }
 }
