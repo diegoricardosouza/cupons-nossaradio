@@ -4,7 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Coupon;
 
-class CouponRepository {
+class HomeRepository
+{
     protected $entity;
 
     public function __construct(Coupon $coupon)
@@ -44,13 +45,4 @@ class CouponRepository {
 
         return $coupon->delete();
     }
-
-    public function updateDownload($id)
-    {
-        $coupon = $this->getCoupon($id);
-
-        return $coupon->update(['downloads' => $coupon->downloads + 1]);
-    }
 }
-
-

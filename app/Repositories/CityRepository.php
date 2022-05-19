@@ -27,6 +27,11 @@ class CityRepository {
         return $this->entity->find($id);
     }
 
+    public function getCityBySlug($slug)
+    {
+        return $this->entity->where('slug', $slug)->first();
+    }
+
     public function createNew($data)
     {
         return $this->entity->create($data);
@@ -44,6 +49,17 @@ class CityRepository {
         $city = $this->getCity($id);
 
         return $city->delete();
+    }
+
+    public function getAllByCity($slug, $number = 6)
+    {
+        $city = $this->getCityBySlug($slug);
+
+        if(!$city) {
+            return null;
+        } else {
+            return $city->coupons()->paginate($number);
+        }
     }
 }
 

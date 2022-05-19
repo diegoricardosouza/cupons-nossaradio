@@ -58,7 +58,7 @@
                                 <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-semibold text-slate-700 mb-3">Imagem</span>
                                 <div class="flex items-center space-x-6">
                                     <div class="shrink-0">
-                                        <img class="h-16 w-16 object-cover rounded-full preview-image" src="{{ url("storage/{$coupon->image}") }}" alt="{{ $coupon->name }}" />
+                                        <img class="object-cover w-20 preview-image" src="{{ url("storage/{$coupon->image}") }}" alt="{{ $coupon->name }}" />
                                     </div>
                                     <label class="block">
                                         <span class="sr-only">Choose profile photo</span>

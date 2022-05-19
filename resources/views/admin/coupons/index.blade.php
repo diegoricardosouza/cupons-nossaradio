@@ -72,7 +72,7 @@
                                 Validade
                             </th>
                             <th
-                                class="px-5 py-3 border-b-2 border-gray-200 bg-violet-900 text-left text-xs font-semibold text-white uppercase tracking-wider w-40"
+                                class="px-5 py-3 border-b-2 border-gray-200 bg-violet-900 text-xs font-semibold text-white uppercase tracking-wider w-40 text-center"
                             >
                                 Downloads
                             </th>
@@ -103,7 +103,7 @@
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm font-semibold">
                                 {{ $coupon->validity }}
                             </td>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm font-semibold">
+                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm font-semibold text-center">
                                 @if($coupon->downloads) {{ $coupon->downloads }} @else 0 @endif
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

@@ -3,15 +3,12 @@
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/city/{slug}', [HomeController::class, 'city'])->name('home.city');
+Route::post('/city-ajax', [HomeController::class, 'ajaxDownload'])->name('home.ajax.city');
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', function () {
@@ -39,7 +36,5 @@ Route::middleware('auth')->group(function() {
     Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupons.create');
     Route::post('/coupons', [CouponController::class, 'store'])->name('coupons.store');
 });
-
-
 
 require __DIR__.'/auth.php';

@@ -54,17 +54,22 @@
                             </div>
 
                             <div class="mt-4">
-                                <label class="block">
-                                    <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-semibold text-slate-700 mb-3">Imagem</span>
-                                    <span class="sr-only">Choose profile photo</span>
-                                    <input type="file" name="image" class="block w-full text-sm text-slate-500
-                                    file:mr-4 file:py-2 file:px-4
-                                    file:rounded-full file:border-0
-                                    file:text-sm file:font-semibold
-                                    file:bg-violet-50 file:text-violet-700
-                                    hover:file:bg-violet-100
-                                    "/>
-                                </label>
+                                <span class="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-semibold text-slate-700 mb-3">Imagem</span>
+                                <div class="flex items-center space-x-6">
+                                    <div class="shrink-0">
+                                        <img class="object-cover w-20 preview-image" src="{{ url('images/sem-foto.jpg') }}" />
+                                    </div>
+                                    <label class="block">
+                                        <span class="sr-only">Choose profile photo</span>
+                                        <input type="file" name="image" required class="block w-full text-sm text-slate-500
+                                        file:mr-4 file:py-2 file:px-4
+                                        file:rounded-full file:border-0
+                                        file:text-sm file:font-semibold
+                                        file:bg-violet-50 file:text-violet-700
+                                        hover:file:bg-violet-100
+                                        "/>
+                                    </label>
+                                </div>
 
                                 @if ($errors->has('image'))
                                     <div class="text-red-700 mt-1 font-semibold text-sm">
@@ -117,4 +122,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const fileInput = document.querySelector('input[type=file]');
+        const previewImage = document.querySelector('.preview-image');
+
+        fileInput.addEventListener('change', () => {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.addEventListener('load', () => {
+                previewImage.src = reader.result;
+            });
+
+            reader.readAsDataURL(file);
+        });
+    </script>
 </x-app-layout>
