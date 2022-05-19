@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('coupons')" :active="request()->routeIs('coupons')">
+                    <x-nav-link :href="route('coupons.index')" :active="request()->routeIs('coupons.index')">
                         {{ __('Cupons') }}
                     </x-nav-link>
 
@@ -84,7 +84,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('coupons')" :active="request()->routeIs('coupons')">
+            <x-responsive-nav-link :href="route('coupons.index')" :active="request()->routeIs('coupons.index')">
                 {{ __('Cupons') }}
             </x-responsive-nav-link>
 

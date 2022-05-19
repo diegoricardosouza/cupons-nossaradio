@@ -17,6 +17,11 @@ class CityRepository {
         return $this->entity->paginate($number);
     }
 
+    public function getTotal()
+    {
+        return $this->entity->all();
+    }
+
     public function getCity($id)
     {
         return $this->entity->find($id);

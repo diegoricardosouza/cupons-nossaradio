@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,9 +32,12 @@ Route::middleware('auth')->group(function() {
     Route::get('/cities/create', [CityController::class, 'create'])->name('cities.create');
     Route::post('/cities', [CityController::class, 'store'])->name('cities.store');
 
-    Route::get('/coupons', function () {
-        return view('coupons');
-    })->name('coupons');
+    Route::delete('/coupons/{id}', [CouponController::class, 'destroy'])->name('coupons.destroy');
+    Route::put('/coupons/{id}', [CouponController::class, 'update'])->name('coupons.update');
+    Route::get('/coupons/{id}/edit', [CouponController::class, 'edit'])->name('coupons.edit');
+    Route::get('/coupons', [CouponController::class, 'index'])->name('coupons.index');
+    Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupons.create');
+    Route::post('/coupons', [CouponController::class, 'store'])->name('coupons.store');
 });
 
 

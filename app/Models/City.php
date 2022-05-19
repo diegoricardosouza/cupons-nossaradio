@@ -17,4 +17,9 @@ class City extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function coupons()
+    {
+        return $this->belongsToMany(Coupon::class);
+    }
 }
