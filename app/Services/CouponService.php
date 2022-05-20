@@ -17,9 +17,9 @@ class CouponService {
         $this->repositoryCity = $repositoryCity;
     }
 
-    public function getAllCoupons()
+    public function getAllCoupons($search)
     {
-        return $this->repository->getAll();
+        return $this->repository->getAll($search);
     }
 
     public function getAllCities()

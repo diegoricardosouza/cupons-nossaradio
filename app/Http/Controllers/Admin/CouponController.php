@@ -22,11 +22,12 @@ class CouponController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $coupons = $this->couponService->getAllCoupons();
+        $search = $request->search ?? '';
+        $coupons = $this->couponService->getAllCoupons($request->search ?? '');
 
-        return view('admin.coupons.index', compact('coupons'));
+        return view('admin.coupons.index', compact('coupons', 'search'));
     }
 
     /**

@@ -12,9 +12,15 @@ class CouponRepository {
         $this->entity = $coupon;
     }
 
-    public function getAll($number = 6)
+    public function getAll($search = null, $number = 6)
     {
-        return $this->entity->paginate($number);
+        $coupons = $this->entity->where(function ($query) use ($search) {
+            if($search) {
+                $query->where('name', 'LIKE', "%{$search}%");
+            }
+        })->paginate($number);
+
+        return $coupons;
     }
 
     public function getCoupon($id)

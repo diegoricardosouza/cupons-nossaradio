@@ -1,10 +1,23 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
-            {{ __('Cupons') }}
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
+                {{ __('Cupons') }}
+            </h2>
 
+            <form action="{{ route('coupons.index') }}" method="get" class="py-5 flex">
+                <label class="relative block">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <svg class="h-5 w-5 fill-slate-500" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <input type="text" name="search" placeholder="Pesquisar" class="md:w-60 bg-gray-200 appearance-none border-2 border-gray-200 rounded-full w-full py-1 px-4 pl-9 text-gray-700 leading-tight outline-0 focus:outline-none focus:bg-white focus:border-blue-500 mr-2" value="{{ $search }}">
+                </label>
 
-        </h2>
+                <button class="shadow bg-blue-700 hover:bg-blue-600 focus:shadow-outline focus:outline-none transition-all text-white font-semibold py-1 px-4 rounded-full">Pesquisar</button>
+            </form>
+        </div>
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center mt-5 justify-between">
@@ -48,7 +61,7 @@
 
             <div class="bg-white shadow-sm sm:rounded-lg overflow-auto">
                 @if($coupons->total() > 0)
-                <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden">
+                <table class="min-w-full leading-normal shadow-md rounded-lg overflow-hidden" style="min-width: 1200px;">
                     <thead>
                         <tr>
                             <th
