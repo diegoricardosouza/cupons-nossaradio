@@ -39,4 +39,9 @@ class ListMailService {
     {
         return $this->repository->delete($id);
     }
+
+    public function getAllMailsTotal()
+    {
+        return $this->repository->getAllMails();
+    }
 }

@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/list', [ListMailController::class, 'index'])->name('list.index');
     Route::get('/list/create', [ListMailController::class, 'create'])->name('list.create');
     Route::post('/list', [ListMailController::class, 'store'])->name('list.store');
+    Route::get('/list/export', [ListMailController::class, 'export'])->name('list.export');
 });
 
 require __DIR__.'/auth.php';

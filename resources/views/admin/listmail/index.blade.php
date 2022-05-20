@@ -1,10 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
-            {{ __('Lista de Emails') }}
+        <div class="flex justify-between items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center">
+                {{ __('Lista de Emails') }}
+            </h2>
 
-
-        </h2>
+            <a href="{{ route('list.export') }}" class="flex items-center justify-center bg-green-700 hover:bg-green-600 transition-all rounded-full py-2 px-4 text-white text-xs uppercase">Exportar Emails</a>
+        </div>
     </x-slot>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex items-center mt-5 justify-between">

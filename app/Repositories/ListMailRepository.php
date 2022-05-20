@@ -17,6 +17,11 @@ class ListMailRepository {
         return $this->entity->paginate($number);
     }
 
+    public function getAllMails()
+    {
+        return $this->entity->all();
+    }
+
     public function getMail($id)
     {
         return $this->entity->find($id);

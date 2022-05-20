@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ListMailExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateListMailFormRequest;
 use App\Services\ListMailService;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class ListMailController extends Controller
@@ -73,5 +75,10 @@ class ListMailController extends Controller
         $this->listMailService->deleteMail($id);
 
         return redirect()->route('list.index')->with('user_success', 'Email Deletado com sucesso!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ListMailExport, 'emails.xlsx');
     }
 }
