@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/city/{slug}', [HomeController::class, 'city'])->name('home.city');
 Route::post('/city-ajax', [HomeController::class, 'ajaxDownload'])->name('home.ajax.city');
+Route::post('/storemail', [HomeController::class, 'ajaxEmail'])->name('home.ajax.email');
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', function () {

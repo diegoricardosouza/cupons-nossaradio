@@ -22,11 +22,14 @@ class ListMailRepository {
         return $this->entity->find($id);
     }
 
+    public function getMailByName($email)
+    {
+        return $this->entity->where('email', $email)->first();
+    }
+
     public function createNew($data)
     {
-        $mail = $this->entity->create($data);
-
-        return $mail;
+        return $this->entity->create($data);
     }
 
     public function update($id, $data)

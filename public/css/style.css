@@ -77,11 +77,11 @@ body {
 
 .coupons-modal__bg {
     position: relative;
-    min-height: 100vh;
+    overflow: hidden;
 }
 
 .coupons-modal__content {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;

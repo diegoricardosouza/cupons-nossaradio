@@ -38,4 +38,9 @@ class HomeController extends Controller
     {
         return $this->homeService->ajaxUpdateDownload($request->id);
     }
+
+    public function ajaxEmail(Request $request)
+    {
+        return $this->homeService->ajaxStoreEmail($request->email);
+    }
 }
