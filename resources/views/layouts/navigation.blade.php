@@ -24,6 +24,10 @@
                         {{ __('Cidades') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('list.index')" :active="request()->routeIs('list.index')">
+                        {{ __('Lista de emails') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">
                         {{ __('Usuários') }}
                     </x-nav-link>
@@ -86,6 +90,14 @@
 
             <x-responsive-nav-link :href="route('coupons.index')" :active="request()->routeIs('coupons.index')">
                 {{ __('Cupons') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('cities.index')" :active="request()->routeIs('cities.index')">
+                {{ __('Cidades') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('list.index')" :active="request()->routeIs('list.index')">
+                {{ __('Lista de emails') }}
             </x-responsive-nav-link>
 
             <x-responsive-nav-link :href="route('users.index')" :active="request()->routeIs('users.index')">

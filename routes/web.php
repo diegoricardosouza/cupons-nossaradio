@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\ListMailController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,13 @@ Route::middleware('auth')->group(function() {
     Route::get('/coupons', [CouponController::class, 'index'])->name('coupons.index');
     Route::get('/coupons/create', [CouponController::class, 'create'])->name('coupons.create');
     Route::post('/coupons', [CouponController::class, 'store'])->name('coupons.store');
+
+    Route::delete('/list/{id}', [ListMailController::class, 'destroy'])->name('list.destroy');
+    Route::put('/list/{id}', [ListMailController::class, 'update'])->name('list.update');
+    Route::get('/list/{id}/edit', [ListMailController::class, 'edit'])->name('list.edit');
+    Route::get('/list', [ListMailController::class, 'index'])->name('list.index');
+    Route::get('/list/create', [ListMailController::class, 'create'])->name('list.create');
+    Route::post('/list', [ListMailController::class, 'store'])->name('list.store');
 });
 
 require __DIR__.'/auth.php';
