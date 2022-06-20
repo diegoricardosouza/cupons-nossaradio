@@ -40,9 +40,37 @@
         <div class="row">
             @foreach($coupons as $coupon)
             <div class="col w-20 text-center coupons__block">
-                <a href="{{ url("storage/{$coupon->image}") }}" download onclick="onClick({{ $coupon->id }})">
+                <a href="#" data-toggle="modal" data-target="#exampleModalCenter{{ $coupon->id }}">
                     <img src="{{ url("storage/{$coupon->image}") }}" alt="{{ $coupon->name }}" title="{{ $coupon->name }}" class="img-fluid">
                 </a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter{{ $coupon->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle{{ $coupon->id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">{{ $coupon->name }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <a href="{{ url("storage/{$coupon->image}") }}" download onclick="onClick({{ $coupon->id }})">
+                                    <img src="{{ url("storage/{$coupon->image}") }}" alt="{{ $coupon->name }}" title="{{ $coupon->name }}" class="img-fluid">
+                                </a>
+                            </div>
+
+                            <div style="margin-top: 20px;" class="text-center">
+                                <p>Para acessar o desconto do cupom basta clicar em cima da imagem e imprimir ou salvar a imagem no seu celular e apresentar no estabelecimento no ato da compra.<br><br>
+
+                                Para pedidos por telefone informe sobre o cupom antes do fechamento da compra. Cupom ainda não aceito para compras on-line.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>

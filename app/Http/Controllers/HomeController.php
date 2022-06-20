@@ -19,9 +19,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $coupons = $this->homeService->getAllCoupons();
+        $coupons = $this->homeService->getAllCoupons($request->search ?? '');
 
         return view('front.home', compact('coupons'));
     }

@@ -20,14 +20,14 @@ class HomeService {
         $this->repositoryEmail = $repositoryEmail;
     }
 
-    public function getAllCoupons()
+    public function getAllCoupons($search)
     {
-        return $this->repository->getAll(15);
+        return $this->repository->getAll($search, 30);
     }
 
     public function getAllCouponsByCity($city)
     {
-        return $this->repositoryCity->getAllByCity($city, 15);
+        return $this->repositoryCity->getAllByCity($city, 30);
     }
 
     public function getCityBySlug($slug)

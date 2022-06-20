@@ -5,12 +5,18 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\ListMailController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/city/{slug}', [HomeController::class, 'city'])->name('home.city');
 Route::post('/city-ajax', [HomeController::class, 'ajaxDownload'])->name('home.ajax.city');
 Route::post('/storemail', [HomeController::class, 'ajaxEmail'])->name('home.ajax.email');
+
+// Gera link simbolico
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', function () {

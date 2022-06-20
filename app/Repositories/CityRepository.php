@@ -58,7 +58,9 @@ class CityRepository {
         if(!$city) {
             return null;
         } else {
-            return $city->coupons()->paginate($number);
+            return $city->coupons()
+                        ->orderBy('name', 'asc')
+                        ->paginate($number);
         }
     }
 }

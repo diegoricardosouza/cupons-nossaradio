@@ -18,7 +18,9 @@ class CouponRepository {
             if($search) {
                 $query->where('name', 'LIKE', "%{$search}%");
             }
-        })->paginate($number);
+        })
+        ->orderBy('name', 'asc')
+        ->paginate($number);
 
         return $coupons;
     }
